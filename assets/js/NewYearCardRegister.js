@@ -28,6 +28,15 @@ loginConfig: {
   showTorusButton: true // default: true
 });
 await torus.login(); // await torus.ethereum.enable()
-web3tr = new Web3(torus.provider);
+web3tr = await new Web3(torus.provider);
+
+let useraddress = await web3tr.eth.getAccounts();
+console.log(useraddress[0]);
+
+myurl = "https://newyearscardserver.onrender.com/?address=" + useraddress[0];
+
+window.alert("ご登録ありがとうございます！");
+window.window.location.href = myurl ;
+
 }
 
